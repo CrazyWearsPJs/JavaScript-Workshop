@@ -12,12 +12,17 @@ var goku = {
     attack: 'Kamehameha'
 };
 
+var naruto = {
+    race: 'Human', 
+    attack: 'Rasengan'
+};
+
 /*
  * A function can take in a value of any type - Objects, Numbers, etc
  * as an argument and can also return a value of any type.
  */
 
-console.log(getAttack(goku) + "!!");
+console.log(getAttack(goku) + '!!');
 //> "Kamehameha!!"
 
 /*
@@ -26,23 +31,27 @@ console.log(getAttack(goku) + "!!");
  * for other functions and returned by other function.
  */
 
-function upgradeGetAttack(upgrade, attackGetter) {
+function repeatAttack(attackGetter, times, delimiter) {
     /*
      * A function can also have no name and be used
      * in an expression. This is known as an "anonymous function".
     */
     return function(fighter) {
-        return upgrade + ' '  + attackGetter(fighter);
+        var ret = '';
+        for(var i = 0; i < times; ++i) {
+            ret += attackGetter(fighter) + delimiter;
+        }
+        return ret;
     };
 }
 
 //Functions can also be stored in variables
-var getSuperAttack = upgradeGetAttack("Super", getAttack);
+var attack3Times = repeatAttack(getAttack, 3, '!! ');
 
-console.log(getSuperAttack(goku) + "!!");
-// > Super Kamehameha!!
+console.log(attack3Times(goku));
+//> Kamehameha!! Kamehameha!! Kamehameha!!
 
-
-
+console.log(attack3Times(naruto));
+//> Rasengan!! Rasengan!! Rasengan!! 
 
 
