@@ -24,6 +24,6 @@ for(var i = 0; i < 8; i += 1) {
     s += 'buffalo';
 }
 console.log(s);
-//> buffalo buffalo buffalo buffalo buffalo buffalo Buffalo buffalo
+//> buffalo buffalo buffalo buffalo buffalo buffalo buffalo buffalo
 
 
