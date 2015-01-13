@@ -55,3 +55,26 @@ console.log(attack3Times(naruto));
 //> Rasengan!! Rasengan!! Rasengan!! 
 
 
+/*
+ * Functions within other functions still have access to the variables
+ * that belong to their parent functions
+ *
+ * They "remember those values"
+ */
+
+function makeCounter() {
+    // you can think of this variable as private
+    var count = 0;
+    return function() {
+        count += 1;
+        return count;
+    };
+}
+
+var count = makeCounter();
+console.log(count());
+// > 1
+console.log(count());
+// > 2
+console.log(count());
+//> 3
