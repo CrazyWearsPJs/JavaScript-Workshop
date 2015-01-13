@@ -12,11 +12,6 @@ var goku = {
     attack: 'Kamehameha'
 };
 
-var naruto = {
-    race: 'Human', 
-    attack: 'Rasengan'
-};
-
 /*
  * A function can take in a value of any type - Objects, Numbers, etc
  * as an argument and can also return a value of any type.
@@ -50,6 +45,11 @@ var attack3Times = repeatAttack(getAttack, 3, '!! ');
 
 console.log(attack3Times(goku));
 //> Kamehameha!! Kamehameha!! Kamehameha!!
+
+var naruto = {
+    race: 'Human', 
+    attack: 'Rasengan'
+};
 
 console.log(attack3Times(naruto));
 //> Rasengan!! Rasengan!! Rasengan!! 
