@@ -3,78 +3,84 @@
  * like C++ or Java, although they look similar.
  */
 
-function getAttack(fighter) {
-    return fighter.attack;
-}
-
-var goku = {
-    race: 'Saiyan',
-    attack: 'Kamehameha'
-};
-
 /*
  * A function can take in a value of any type - Objects, Numbers, etc
  * as an argument and can also return a value of any type.
  */
 
-console.log(getAttack(goku) + '!!');
-//> "Kamehameha!!"
-
-/*
- * Functions in JavaScript are actually Objects, 
- * which means that they can be used as arguments
- * for other functions and returned by other function.
- */
-
-function repeatAttack(attackGetter, times, delimiter) {
-    /*
-     * A function can also have no name and be used
-     * in an expression. This is known as an "anonymous function".
-    */
-    return function(fighter) {
-        var ret = '';
-        for(var i = 0; i < times; ++i) {
-            ret += attackGetter(fighter) + delimiter;
-        }
-        return ret;
-    };
+// function declaration
+function isEven(num) {
+    return num % 2 === 0;
 }
 
-//Functions can also be stored in variables
-var attack3Times = repeatAttack(getAttack, 3, '!! ');
+console.log(isEven(42));
+//> true
 
-console.log(attack3Times(goku));
-//> Kamehameha!! Kamehameha!! Kamehameha!!
+console.log(isEven(13));
+//> false
 
-var naruto = {
-    race: 'Human', 
-    attack: 'Rasengan'
+/*
+ * In addition to the declarating syntax, 
+ * we can use the expression syntax, which we can use
+ * to assign to a variable or object property
+ */
+
+var getHello = function() {
+    return "Hello";
 };
 
-console.log(attack3Times(naruto));
-//> Rasengan!! Rasengan!! Rasengan!! 
+console.log(getHello());
+// > Hello
 
+var MathFunctions = {};
+MathFunctions.pow = function(base, exp) {
+    // assume exp is >= 0
+    var ret = 1;
+
+    for(var i = 0; i < exp; i += 1) {
+        ret *= base;
+    }
+    
+    return ret;
+};
+
+MathFunctions.factorial = function(x) {
+    var ret = 1;
+
+    for(var i = 2; i <= x; i += 1) {
+        ret *= i;
+    }
+
+    return ret;
+};
+
+console.log(MathFunctions.pow(2, 4));
+//> 16
 
 /*
- * Functions within other functions still have access to the variables
- * that belong to their parent functions
- *
- * They "remember those values"
+ * Functions in JS can take in any number of arguments, 
+ * and you can choose to omit some arguments.
  */
+function join(arr, delimiter) {
+    if (delimiter === undefined) {
+        delimiter = ' ';
+    }
 
-function makeCounter() {
-    // you can think of this variable as private
-    var count = 0;
-    return function() {
-        count += 1;
-        return count;
-    };
+    var ret = '';
+    for(var i = 0; i < arr.length; i += 1) {
+        ret += arr[i];
+        if(i !== arr.length - 1) {
+            ret += delimiter;
+        }
+    }
+    return ret;
 }
 
-var count = makeCounter();
-console.log(count());
-// > 1
-console.log(count());
-// > 2
-console.log(count());
-//> 3
+var quote1 = ["Reach", "for", "the", "Sky!"];
+console.log(join(quote1, '-'));
+//> Reach-for-the-Sky!
+
+//omit the first argument
+var quote2 = ["No", "Skyler", "I", "AM", "THE", "DANGER", "!"];
+console.log(join(quote2));
+//> No Skyler I AM THE DANGER !
