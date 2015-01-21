@@ -25,12 +25,12 @@ function Dalmation () {
 
 Dalmation.prototype = new Dog ();
 Dalmation.prototype.ownerName = function () {
-    console.log(this.owner);
+    return this.owner;
 };
 
 var pongo = new Dalmation (); // Inherited from 'Animal'
 pongo.makeNoise();
 //> bark!
-pongo.ownerName(); // Defined in 'Dalmation'
+console.log(pongo.ownerName()); // Defined in 'Dalmation'
 //> Cruella DeVille
 
