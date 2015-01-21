@@ -37,4 +37,7 @@ function showLocation () {
     map.setCenter(latlng);
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+initialize();
+
+var button = document.getElementById('map-button');
+button.addEventListener('map-button', showLocation);
