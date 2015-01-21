@@ -6,6 +6,10 @@
  * This is known as prototypical inheritance
  */
 
+/*
+ * Lets begin with the non-inheritance approach
+ */
+
 // Our 'Animal' class again
 function Animal(sound) {
     this.sound = sound;
@@ -39,37 +43,4 @@ Dog.prototype.makeNoise = function () {
 
 // var sparky = new Dog ('bark!');
 // sparky.makeNoise();
-
-
-/*
- * Great Job! Now lets implement the 'Dog' class
- * using prototypical inheritance
- */
-
-// Uncomment the following lines, and comment out the previous
-// Dog section
-
-function Dog () {};
-Dog.prototype = new Animal ('bark!');
-
-var sparky = new Dog ();
-sparky.makeNoise();
-//> bark!
-
-// You can create even more 'derived' classes
-function Dalmation () {
-    this.owner = 'Cruella DeVille';
-}
-Dalmation.prototype = new Dog ();
-Dalmation.prototype.ownerName = function () {
-    console.log(this.owner);
-};
-
-var pongo = new Dalmation ();
-// Method inherited from 'Animal'
-pongo.makeNoise();
-//> bark!
-// Method defined in 'Dalmation'
-pongo.ownerName();
-//> Cruella DeVille
 
